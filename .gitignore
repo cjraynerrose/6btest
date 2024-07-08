@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 # Ignore bs now its a package
 wwwroot/lib/bootstrap
+/HealthTech/HealthTech.Web/wwwroot/lib/bootstrap

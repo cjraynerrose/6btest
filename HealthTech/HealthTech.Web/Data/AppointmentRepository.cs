@@ -33,7 +33,9 @@ namespace HealthTech.Web.Data
 
         public async Task<List<Appointment>> GetMany()
         {
-            return await _context.Appointments.ToListAsync();
+            return await _context.Appointments
+                .OrderByDescending(a => a.Date)
+                .ToListAsync();
         }
 
         public async Task<Appointment> Update(Appointment appointment)
