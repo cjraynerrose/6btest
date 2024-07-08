@@ -4,6 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
+@section Scripts {
+    <script src="~/js/admin.js" asp-append-version="true"></script>
+}
 
 <h1>Index</h1>
 
@@ -20,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Issue)
+                Patient Issue
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ContactNumber)
@@ -56,9 +59,13 @@
                 @Html.DisplayFor(modelItem => item.Approved)
             </td>
             <td>
+                @{
+                    var approveBtnText = item.Approved ? "Disapprove" : "Approve";
+                    var approveBtnClass = item.Approved ? "btn-danger" : "btn-primary";
+                }
                 <div class="btn-group">
-                        <button id="ApproveAppointmentBtn" type="button" class="btn btn-danger" data-id="@item.Id">Approve</button>
-                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button id="ApproveAppointmentBtn" type="button" class="btn @approveBtnClass" data-id="@item.Id">@approveBtnText</button>
+                        <button type="button" class="btn @approveBtnClass dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
 

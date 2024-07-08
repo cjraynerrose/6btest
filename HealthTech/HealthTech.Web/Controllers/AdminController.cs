@@ -159,14 +159,28 @@ namespace HealthTech.Web.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Approve(int id)
+        [HttpPost, ActionName("ApproveAppointment")]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApproveAppointment(int id)
         {
-            Appointment appointment = await _appointmentRepository.Get(id);
-            appointment.Approved = true;
-            await _appointmentRepository.Update(appointment);
-            return RedirectToAction(nameof(Index));
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                Appointment appointment = await _appointmentRepository.Get(id);
+                appointment.Approved = !appointment.Approved;
+                await _appointmentRepository.Update(appointment);
+            }
+            catch (Exception ex)
+            {
+                // TODO replace with frieldly message
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
         }
 
         // GET: Admin/Delete/5
