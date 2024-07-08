@@ -21,6 +21,8 @@ namespace HealthTech.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddTransient<IAppointmentRepository, AppointmentRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

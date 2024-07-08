@@ -4,7 +4,7 @@ namespace HealthTech.Web.Data
 {
     public interface IAppointmentRepository
     {
-        Task<Appointment> Create(Appointment appointment);
+        Task Create(Appointment appointment);
         Task Delete(int id);
         Task<Appointment> Get(int id);
         Task<List<Appointment>> GetMany();
@@ -21,11 +21,10 @@ namespace HealthTech.Web.Data
             _context = context;
         }
 
-        public async Task<Appointment> Create(Appointment appointment)
+        public async Task Create(Appointment appointment)
         {
             _context.Appointments.Add(appointment);
             await _context.SaveChangesAsync();
-            return appointment;
         }
         public async Task<Appointment> Get(int id)
         {

@@ -1,4 +1,6 @@
+using HealthTech.Web.Data;
 using HealthTech.Web.Models;
+using HealthTech.Web.Models.Patient;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,10 +9,14 @@ namespace HealthTech.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IAppointmentRepository _appointmentRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            ILogger<HomeController> logger
+            ,IAppointmentRepository appointmentRepository)
         {
             _logger = logger;
+            _appointmentRepository = appointmentRepository;
         }
 
         public IActionResult Index()
@@ -24,6 +30,25 @@ namespace HealthTech.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpPost]
+        public IActionResult CreateAppointment([FromForm] AppointmentBookingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var appointment = new Appointment
+                {
+                    Name = model.Name,
+                    Date = model.Date,
+                    Issue = model.Issue,
+                    ContactNumber = model.ContactNumber,
+                    Email = model.Email,
+                };
 
+                _appointmentRepository.Create(appointment);
+            }
+
+            // TODO: Could return a check the status of your appt here
+            return View(nameof(Index));
+        }
     }
 }
