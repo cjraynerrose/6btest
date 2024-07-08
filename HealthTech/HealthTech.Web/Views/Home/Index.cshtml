@@ -6,30 +6,50 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    @if(ViewData["Message"] != null)
+    {
+        string styleClass = "alert-danger";
+        if (ViewData.ContainsKey("Success"))
+        {
+            var success = (bool)ViewData["Success"];
+            if(success)
+            {
+                styleClass = "alert-success";
+            }
+        }
+        <div class="alert @styleClass" role="alert">
+            @ViewData["Message"]
+        </div>
+    }
 
     <form class="form-control" asp-action="CreateAppointment" asp-controller="Home">
         <div>
+            <span asp-validation-for="Name" class="text-danger d-block"></span>
             <label class="form-label" asp-for="Name"></label>
-            <input class="form-text" asp-for="Name" class="form-control" />
+            <input class="form-input" asp-for="Name" class="form-control" />
         </div>
 
         <div>
+            <span asp-validation-for="Date" class="text-danger d-block"></span>
             <label class="form-label" asp-for="Date"></label>
             <input class="form-input" asp-for="Date" class="form-control" />
         </div>
 
         <div>
+            <span asp-validation-for="Issue" class="text-danger d-block"></span>
             <label class="form-label" asp-for="Issue"></label>
-            <input class="form-input" asp-for="Issue" class="form-control" />
+            <textarea class="form-input" asp-for="Issue" class="form-control"></textarea>
         </div>
 
         <div>
+            <span asp-validation-for="ContactNumber" class="text-danger d-block"></span>
             <label class="form-label" asp-for="ContactNumber"></label>
             <input class="form-input" asp-for="ContactNumber" class="form-control" />
         </div>
 
         <div>
+            <span asp-validation-for="Email" class="text-danger d-block"></span>
             <label class="form-label" asp-for="Email"></label>
             <input class="form-input" asp-for="Email" class="form-control" />
         </div>

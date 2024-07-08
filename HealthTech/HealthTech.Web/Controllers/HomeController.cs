@@ -45,6 +45,14 @@ namespace HealthTech.Web.Controllers
                 };
 
                 _appointmentRepository.Create(appointment);
+
+                ViewData["Success"] = true;
+                ViewData["Message"] = "Your appointment has been successfully booked.";
+            }
+            else
+            {
+                ViewData["Success"] = false;
+                ViewData["Message"] = "There was an error with your submission. Please try again.";
             }
 
             // TODO: Could return a check the status of your appt here
