@@ -1,5 +1,4 @@
-﻿using HealthTech.Web.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HealthTech.Web.Data
@@ -12,5 +11,7 @@ namespace HealthTech.Web.Data
             : base(options)
         {
         }
+
+
     }
 }

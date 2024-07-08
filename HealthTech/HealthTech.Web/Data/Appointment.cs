@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HealthTech.Web.Models
+namespace HealthTech.Web.Data
 {
     public class Appointment
     {
