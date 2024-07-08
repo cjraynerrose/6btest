@@ -1,4 +1,5 @@
 using HealthTech.Web.Data;
+using HealthTech.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
