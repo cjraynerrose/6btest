@@ -15,7 +15,7 @@ namespace HealthTech.Web.Models.Patient
         public DateTimeOffset Date { get; set; }
 
         [Required]
-        [DataType(DataType.MultilineText)]
+        [DataType(DataType.MultilineText)] // TODO : doesnt seem to be respected in the view
         [Display(Name = "Please describe your issue")]
         public string Issue { get; set; }
 

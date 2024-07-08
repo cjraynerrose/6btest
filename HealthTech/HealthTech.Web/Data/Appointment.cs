@@ -21,7 +21,7 @@ namespace HealthTech.Web.Data
 
         public bool Approved { get; set; }
 
-        public DateTimeOffset CreatedAt { get; }
+        public DateTimeOffset CreatedAt { get; } // TODO : didnt get added to the migration
         public DateTimeOffset UpdatedAt { get; set; }
     }
 }
