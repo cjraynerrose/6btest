@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
-    document.getElementById("ApproveAppointmentBtn").addEventListener("click", function (e) {
+    document.getElementsByName("ApproveAppointmentBtn")
+        .forEach((btn) => btn.addEventListener("click", function (e) {
         var token = document.querySelector("[name='__RequestVerificationToken']").value;
         var id = this.attributes["data-id"].value;
         var formData = new FormData();
@@ -17,5 +18,5 @@
                     alert("An error occurred while approving the appointment")
                 }
             })
-    });
+    }));
 });
